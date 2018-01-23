@@ -2,6 +2,8 @@
 a clumsily-written program to pixelize photographs. uses [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering) to determine the most common color from image regions and pixelizes image based on this information.
 
 
+<img src="sunset-original.jpg?raw=true" width="400"><img src="sunset-final.jpg?raw=true" width="400">
+
 ## user's guide
 This program works best with simple images that are often already cartoonized or reduced to 3 or 4 colors, like [this one](https://upload.wikimedia.org/wikipedia/en/5/55/Barack_Obama_Hope_poster.jpg), so don't get too salty if it doesn't work with your huge landscape.
 
