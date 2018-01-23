@@ -4,12 +4,11 @@ import scipy
 import scipy.misc
 import scipy.cluster
 
-img_src = "che.jpg"
-postit_width = 10
-postit_height = 10
+img_src = "sunset.jpg"
+postit_width = 50
+postit_height = 50
 
 img = Image.open(img_src).convert("RGB")
-
 img.show()
 
 img_width = img.size[0]
@@ -17,6 +16,8 @@ img_height = img.size[1]
 
 horizontal_boxes = int(img_width / postit_width)
 vertical_boxes = int(img_height / postit_height)
+
+print("Your image is going to have " + str(horizontal_boxes * vertical_boxes) + "post its")
 
 NUM_CLUSTERS = 5
 
@@ -42,8 +43,10 @@ def get_box_color(region):
     region.paste(peak, [0,0,region.size[0],region.size[1]])
     return region
 
+# iterates through horizontal and vertical boxes and colorizes
 for w in range(0, horizontal_boxes):
     for h in range(0, vertical_boxes):
+        # defines the coordinates of the box
         left_corner = postit_width * w
         right_corner = left_corner + postit_width
         upper = postit_height * h
@@ -55,6 +58,8 @@ for w in range(0, horizontal_boxes):
         colorized_region = get_box_color(region)
         img.paste(colorized_region, box)
 
+# an early attempt to limit the number of colors in the image
+img.convert('P', palette=Image.ADAPTIVE, colors=10)
 img.show()
 
 print(img.format, img.size, img.mode)
