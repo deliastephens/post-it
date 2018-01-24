@@ -2,7 +2,7 @@
 a clumsily-written program to pixelize photographs. uses [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering) to determine the most common color from image regions and pixelizes image based on this information.
 
 
-<img src="sunset.jpg?raw=true" width="400">  <img src="sunset-pixelized.jpg?raw=true" width="400">
+<img src="sunset.jpg?raw=true" width="400">  <img src="sunset-pixelized.png?raw=true" width="400">
 
 *side note: this image has 8112 post its* 
 
