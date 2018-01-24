@@ -1,65 +1,56 @@
 from PIL import Image
-import numpy as np
-import scipy
-import scipy.misc
-import scipy.cluster
+import PIL
 
-img_src = "sunset.jpg"
-postit_width = 50
-postit_height = 50
+borderColor = (0, 0, 0) # RGB values for post-it border colors
+cardSize = 9 # How big you want your "cards" (post it notes) to be
+img_src = 'sunset-original.jpg' # Input file. Make sure to save in same directory as pixelize. 
 
-img = Image.open(img_src).convert("RGB")
-img.show()
+image = Image.open(img_src)
+image = image.convert('RGB')
 
-img_width = img.size[0]
-img_height = img.size[1]
 
-horizontal_boxes = int(img_width / postit_width)
-vertical_boxes = int(img_height / postit_height)
+def pixelize_image(image, cardSize):
+    # Uses the resize function to pixelize the image.
+    # dangerops!! black magic spookery ahead!!
+    image = image.resize((image.size[0]/cardSize, image.size[1]/cardSize), Image.NEAREST)
+    image = image.resize((image.size[0]*cardSize, image.size[1]*cardSize), Image.NEAREST)
 
-print("Your image is going to have " + str(horizontal_boxes * vertical_boxes) + "post its")
+    return image
 
-NUM_CLUSTERS = 5
+def add_borders(image, borderColor):
+    image = image.convert('RGB')
+    pixel = image.load() # Loads image as series of pixels
+    
+    # Adds borders of specified color to image
+    for i in range(0, image.size[0], cardSize):
+        for j in range(0, image.size[1], cardSize):
+            for r in range(cardSize):
+                pixel[i+r, j] = borderColor
+                pixel[i, j+r] = borderColor
 
-def get_box_color(region):
-    ar = np.asarray(region)
-    shape = ar.shape
-    ar = ar.reshape(scipy.product(shape[:2]), shape[2]).astype(float)
+    return image
 
-    # finds clusters
-    codes, dist = scipy.cluster.vq.kmeans(ar, NUM_CLUSTERS)
+def modify_image(image, cardSize):
+    image = pixelize_image(image, cardSize)
 
-    vecs, dist = scipy.cluster.vq.vq(ar, codes)         # assign codes
-    counts, bins = scipy.histogram(vecs, len(codes))    # count occurrences
+    image = image.quantize(5, 1, 5) # Reduces colors of image
 
-    index_max = scipy.argmax(counts)                    # find most frequent
+    image = add_borders(image, borderColor)
+    image.show()
 
-    peak = []
-    for code in codes[index_max]:
-        peak.append(int(code))
+def num_cards(image, cardSize):
+    # Get the total number of post-its required
+    horizontal_cards = image.size[0] / cardSize
+    vertical_cards = image.size[1] / cardSize
+    total_cards = horizontal_cards * vertical_cards
 
-    peak = tuple(peak)
-
-    region.paste(peak, [0,0,region.size[0],region.size[1]])
-    return region
-
-# iterates through horizontal and vertical boxes and colorizes
-for w in range(0, horizontal_boxes):
-    for h in range(0, vertical_boxes):
-        # defines the coordinates of the box
-        left_corner = postit_width * w
-        right_corner = left_corner + postit_width
-        upper = postit_height * h
-        lower = upper + postit_height
-
-        box = (left_corner, upper, right_corner, lower)
-        region = img.crop(box)
-
-        colorized_region = get_box_color(region)
-        img.paste(colorized_region, box)
-
-# an early attempt to limit the number of colors in the image
-img.convert('P', palette=Image.ADAPTIVE, colors=10)
-img.show()
-
-print(img.format, img.size, img.mode)
+    # Wait for user input to proceed
+    print("These settings require " + str(total_cards) + " post its.")
+    decision = raw_input("Do you want to proceed? y/n: ")
+    if decision == 'y':
+        modify_image(image, cardSize)
+    else:
+        print("Quitting program. Try resizing your input image or making cards larger.")
+        pass
+    
+num_cards(image, cardSize)
