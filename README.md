@@ -2,7 +2,7 @@
 a clumsily-written program to pixelize photographs. uses [k-means clustering](https://en.wikipedia.org/wiki/K-means_clustering) to determine the most common color from image regions and pixelizes image based on this information.
 
 
-<img src="sunset-original.jpg?raw=true" width="400">  <img src="sunset-final.jpg?raw=true" width="400">
+<img src="sunset.jpg?raw=true" width="400">  <img src="sunset-pixelized.jpg?raw=true" width="400">
 
 *side note: this image has 8112 post its* 
 
@@ -18,7 +18,7 @@ while the program is no longer slower than me running a timed mile, it doesn't w
 
 ## to do
 * ~~provide the user with a way to see how many post it notes they're gonna need (and also halt the program if they don't want to put 8112 post its up on the window)~~
-* provide user with an option to save image
+* ~~provide user with an option to save image~~
 * specify a color palette for quantization, so you can get custom post it note colors
 
 ## special thanks
