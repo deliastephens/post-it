@@ -7,9 +7,9 @@ a clumsily-written program to pixelize photographs. uses [k-means clustering](ht
 *side note: this image has 8112 post its* 
 
 ## user's guide
-This program works best with simple images that are often already cartoonized or reduced to 3 or 4 colors, like [this one](https://upload.wikimedia.org/wikipedia/en/5/55/Barack_Obama_Hope_poster.jpg), so don't get too salty if it doesn't work with your huge landscape.
+this program works best with simple images that are often already cartoonized or reduced to 3 or 4 colors, like [this one](https://upload.wikimedia.org/wikipedia/en/5/55/Barack_Obama_Hope_poster.jpg), so don't get too salty if it doesn't work with your huge landscape.
 
-While the program is no longer slower than me running a timed mile, it doesn't work with non-square post it note shapes. To those of you who want non square post its, I want to know where the heck you got these post it notes and why you are using them. 
+while the program is no longer slower than me running a timed mile, it doesn't work with non-square post it note shapes. to those of you who want non square post its, I want to know where the heck you got these post it notes and why you are using them. 
 1. install [python 2.7](https://www.python.org/download/releases/2.7/), [pillow](http://pillow.readthedocs.io/en/latest/installation.html), and [numpy and scipy](https://datahub.packtpub.com/tutorials/installing-numpy-scipy-matplotlib-ipython/).
 2. download or clone this repository.
 3. put the image you want to convert in the repository folder.
