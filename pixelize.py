@@ -3,7 +3,8 @@ import PIL
 
 borderColor = (0, 0, 0) # RGB values for post-it border colors
 cardSize = 10 # How big you want your "cards" (post it notes) to be
-img_src = 'sunset.jpg' # Input file. Make sure to save in same directory as pixelize. 
+img_src = 'sunset.jpg' # Input file. Make sure to save in same directory as pixelize.
+num_colors = 5 # How many different post it note colors ya got
 
 image = Image.open(img_src)
 image = image.convert('RGB')
@@ -41,7 +42,7 @@ def save_image():
 def modify_image(image, cardSize):
     image = pixelize_image(image, cardSize)
 
-    image = image.quantize(5, 1, 5) # Reduces colors of image
+    image = image.quantize(num_colors, 1, 5) # Reduces colors of image
 
     image = add_borders(image, borderColor)
     image.show()
