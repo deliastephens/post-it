@@ -17,7 +17,8 @@ While the program is no longer slower than me running a timed mile, it doesn't w
 5. complain when it doesn't work because i'm incompetent.
 
 ## to do
-* provide the user with a way to see how many post it notes they're gonna need (and also halt the program if they don't want to put 8112 post its up on the window)
+* ~~provide the user with a way to see how many post it notes they're gonna need (and also halt the program if they don't want to put 8112 post its up on the window)~~
+* specify a color palette for quantization, so you can get custom post it note colors
 
 ## special thanks
 * to [this](https://gist.github.com/danyshaanan/6754465) github contributor, who basically wrote the exact program that I was trying to write in a much better way (turns out pillow has k-means clustering built in, so you don't have to do it yourself!)
