@@ -4,6 +4,8 @@ a clumsily-written program to pixelize photographs. uses [k-means clustering](ht
 
 <img src="sunset-original.jpg?raw=true" width="400">  <img src="sunset-final.jpg?raw=true" width="400">
 
+*side note: this image has 8112 post its* 
+
 ## user's guide
 This program works best with simple images that are often already cartoonized or reduced to 3 or 4 colors, like [this one](https://upload.wikimedia.org/wikipedia/en/5/55/Barack_Obama_Hope_poster.jpg), so don't get too salty if it doesn't work with your huge landscape.
 
