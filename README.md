@@ -18,6 +18,7 @@ while the program is no longer slower than me running a timed mile, it doesn't w
 
 ## to do
 * ~~provide the user with a way to see how many post it notes they're gonna need (and also halt the program if they don't want to put 8112 post its up on the window)~~
+* provide user with an option to save image
 * specify a color palette for quantization, so you can get custom post it note colors
 
 ## special thanks
